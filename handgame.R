@@ -31,7 +31,7 @@ handgame <- function(x) {
     }
     }
     )
-    hist (results, breaks = seq(from = min(results), to = max(results)), 
+    histdata <- hist (results, breaks = seq(from = min(results), to = max(results)), 
           xlab = "Games", 
           ylab = "Frequency", 
           main = paste("Games Needed to Succeed Given", x,"People"),
@@ -46,5 +46,4 @@ handgame <- function(x) {
         col = c("red", "green"),
         lty = 1,
         lwd = 1)
-    # print(abs(mean(results) - expected))
 }
