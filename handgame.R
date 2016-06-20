@@ -5,7 +5,7 @@
 # If the group is evenly divided then the game is over and teams are decided.
 # Otherwise they continue the game until teams are decided.
 
-handgame <- function(x) {
+handgame <- function(x, games) {
     # Kill program if input isn't even
     if ((x/2) %% 1 != 0) {
         return ('Not even')
@@ -13,14 +13,13 @@ handgame <- function(x) {
     limit <- 1e5
     count <- 0
     check <- 0
-    B <- 10000
     
     # Expected tries is inverse of probability that a random combination
     # of 0's and 1's in a group of x objects will be half 0's and half 1's
     expected <- (2^x)/choose(x, x/2)
     
-    # Repeat game B times
-    results <- replicate(B, {while (count < limit) {
+    # Repeat game
+    results <- replicate(games, {while (count < limit) {
         while (2 * check != x) {
             check <- sum(sample(c(0,1), x, replace = TRUE))
             count <- count + 1
